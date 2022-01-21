@@ -9,10 +9,6 @@
 void sensor_task(void *pv)
  {
 printf("sensor task \n"); 
-printf("stack remaining:%d",uxTaskGetStackHighWaterMark(NULL)); // remaining stack
-printf("stack remaining:%d",uxTaskPriorityGet(NULL)); // gives priority
-printf("stack remaining:%d",xTaskGetAffinity(NULL)); // cpu id
-
 vTaskDelay(1000/portTICK_PERIOD_MS);
 }
 
@@ -27,10 +23,6 @@ void buzzer_task(void *pv)
     gpio_set_level(ALARM_TASK, 1  ); // high
     vTaskDelay(1000/portTICK_PERIOD_MS);
   }
-  printf("stack remaining:%d",uxTaskGetStackHighWaterMark(NULL)); // remaining stack
-printf("stack remaining:%d",uxTaskPriorityGet(NULL)); // gives priority
-printf("stack remaining:%d",xTaskGetAffinity(NULL)); // cpu id
-  
 }
 
 int app_main()

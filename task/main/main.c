@@ -5,14 +5,21 @@
 
 void sensor_task(void *pv)
  {
-printf("sensor task \n");
-vTaskDelete(NULL);
+   while (1)
+   {
+    printf("sensor task \n");
+   }
+   
 }
 
 void buzzer_task(void *pv)
  {
-printf("sensor task \n");
-vTaskDelete(NULL);
+   while (1)
+   {
+    printf("buzzer task \n");
+   }
+   
+
 }
 
 int app_main()
@@ -24,7 +31,7 @@ BaseType_t result;
     if(result==pdPASS){
       printf("TAsk created");
     } 
-    result = xTaskCreate(buzzer_task,"buzzer",2048,NULL,4,&xHandle2);
+    result = xTaskCreate(buzzer_task,"buzzer",2048,NULL,4,&xHandle2); // task created
     if(result==pdPASS){
       printf("TAsk created");
     }
