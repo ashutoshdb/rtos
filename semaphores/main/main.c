@@ -19,7 +19,7 @@ void sensor_task(void *pv)
     if(sensor_data==10){
       vTaskResume(NULL); // if u want ro resume another process pass handle of that function 
       //  xSemaphoreGive(sem);
-    }
+    } 
    }
 }
 
