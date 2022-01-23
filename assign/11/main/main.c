@@ -15,7 +15,7 @@ int app_main()
     BaseType_t result;
     TaskHandle_t xHandle;
     printf("Hello \n");  
-    result = xTaskCreate(sensor_task,"Sensor",2048,NULL,5,&xHandle);
+    result = xTaskCreate(buzzer_task,"buzzer",2048,NULL,5,&xHandle);
     return 0;
 }
 
