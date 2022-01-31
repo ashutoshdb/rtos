@@ -22,10 +22,12 @@ void sensor_task(void *pv)
 
 void processing_task(void *pv)
  {
+   while(1){
    int recieved_data;
   xQueueReceive(sensor_que,&recieved_data,portMAX_DELAY);
    printf("data is:%d\n",recieved_data); 
-   vTaskDelay(1000/portTICK_PERIOD_MS);
+   vTaskDelay(5000/portTICK_PERIOD_MS);
+   }
 } 
 
 int app_main()

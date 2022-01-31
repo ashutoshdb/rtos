@@ -26,10 +26,7 @@ void pressure_task(void *pv)
     printf("press task \n");
     xEventGroupSetBits(sensor_event,pres_event_bit);
        vTaskDelay(2000/portTICK_PERIOD_MS);
-   }
-
-
- 
+   } 
 }
 void calibration_task(void *pv)
  {

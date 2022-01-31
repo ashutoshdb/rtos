@@ -17,7 +17,7 @@ void sensor_task(void *pv)
   vTaskDelay(1000/portTICK_PERIOD_MS);
 
     if(sensor_data==10){
-      vTaskResume(NULL); // if u want ro resume another process pass handle of that function 
+      vTaskResume(xHandle2); // if u want ro resume another process pass handle of that function 
       //  xSemaphoreGive(sem);
     } 
    }
@@ -27,18 +27,18 @@ void processing_task(void *pv)
  {
    int recieved_data=0;
 //   xSemaphoreTake(sem,portMAX_DELAY);
+while(1){
   vTaskSuspend(NULL);   // we need to pass task handle and if u r n the task  u can pass null
    printf("data is:%d\n",recieved_data); 
    vTaskDelay(1000/portTICK_PERIOD_MS);
-} 
+} }
 
 int app_main()
 {
 
-    //sem =xSemaphoreCreateBinary();
-    printf("Hello pthread\n");  
+    //sem =xSemaphoreCreateBinary(); 
     result = xTaskCreate(sensor_task,"Sensor",2048,NULL,5,&xHandle);   
-    result = xTaskCreate(processing_task,"processing_task",2048,NULL,4,&xHandle2);
+    result = xTaskCreate(processing_task,"processing_task",2048,NULL,6,&xHandle2);
    // xSemaphoreTake(sem,portMAX_DELAY);
 
       return 0;

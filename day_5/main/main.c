@@ -8,29 +8,32 @@
 
 void sensor_task(void *pv)
  {
+    while (1)
+  {
 printf("sensor task \n"); 
 printf("stack remaining:%d",uxTaskGetStackHighWaterMark(NULL)); // remaining stack
 printf("stack remaining:%d",uxTaskPriorityGet(NULL)); // gives priority
 printf("stack remaining:%d",xTaskGetAffinity(NULL)); // cpu id
-
 vTaskDelay(1000/portTICK_PERIOD_MS);
+  }
 }
 
 void buzzer_task(void *pv)
  {
-  esp_rom_gpio_pad_select_gpio(ALARM_TASK); // select gpio pin
-  gpio_set_direction(ALARM_TASK, GPIO_MODE_OUTPUT);
+  // esp_rom_gpio_pad_select_gpio(ALARM_TASK); // select gpio pin
+  // gpio_set_direction(ALARM_TASK, GPIO_MODE_OUTPUT);
   while (1)
   {
-    gpio_set_level(ALARM_TASK, 0); // swtting gpio to low 
-    vTaskDelay(1000/portTICK_PERIOD_MS);
-    gpio_set_level(ALARM_TASK, 1  ); // high
-    vTaskDelay(1000/portTICK_PERIOD_MS);
-  }
-  printf("stack remaining:%d",uxTaskGetStackHighWaterMark(NULL)); // remaining stack
+      printf("stack remaining:%d",uxTaskGetStackHighWaterMark(NULL)); // remaining stack
 printf("stack remaining:%d",uxTaskPriorityGet(NULL)); // gives priority
 printf("stack remaining:%d",xTaskGetAffinity(NULL)); // cpu id
   
+    // gpio_set_level(ALARM_TASK, 0); // swtting gpio to low 
+    // vTaskDelay(1000/portTICK_PERIOD_MS);
+    // gpio_set_level(ALARM_TASK, 1  ); // high
+    vTaskDelay(1000/portTICK_PERIOD_MS);
+  }
+
 }
 
 int app_main()
